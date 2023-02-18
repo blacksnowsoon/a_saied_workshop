@@ -77,67 +77,103 @@
   outline: 2px solid #e8e8e8; 
   transform: translateY(-4px);
 }
-   
 /* STYLING DASHBOARD */
-.dashboard {
-  /* outline: 3px solid red; */
- 
-  
+.panel-container {
+  background:  hsla(220, 2%, 25%, 0.20);
 }
-.dashboard-container {
-  direction: rtl;
-  grid-auto-flow: column;
-  outline: 2px solid wheat;
- 
+
+[data-toggle="collapse"].collapsed .if-not-collapsed,
+[data-toggle="collapse"]:not(.collapsed) .if-collapsed {
+    display: none;
+    
 }
-.menu-left {
-height: 100vh;
-/* display: none; */
-/* clip-path: polygon(100% 20%, 100% 0, 100% 100%, 100% 80%); */
-transition: all 2s linear ease-in-out;
-background: var(--primary);
+.panel {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  padding: 1rem;
+  transition: all 1s linear;
+  transform: translateY(-200%);
+  position: absolute;
+  width: 100%;
+  z-index: -1;
+}
+.panel-down {
+  transition: all 1s linear;
+  position: relative;
+  transform: translateY(0%);
+  z-index: 1;
+}
+.panel::after {
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: hsla(220, 2%, 25%, 0.10);
+  top: 0;
+  z-index: -1;
+}
+.panel-item .link {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: bold;
+  text-decoration: none;
+  border-radius: 50%;
+  /* background: #d0d0d0; */
+  box-shadow: inset 20px 20px 60px inherit,
+            inset -20px -20px 60px inherit;
+  padding: .5rem;
+}
+.panel-btn {
+  padding: .7rem;
 }
 .dashboard-content {
   width: 100%;
   max-width: 1000px;
- 
+  min-height: 100vh;
   margin: 0 auto;
+  position: relative;
 }
 /* ADDING ITEM FROM STYLES */
-.add-new-item {
+.right-mark {
+  fill: var(--success);
+  position: absolute;
+  bottom: 20%;
+  left: 10px;
+}
+.form-container {
+  min-height: 100vh;
+}
+
+.product-form {
   text-align: right;
   display: flex;
   flex-direction: column;
+  justify-content: center;
   gap: .5rem;
+  max-width: 1000px;
+  margin: 0 auto;
 }
-.add-new-item span {
+@media only screen and (max-width: 47rem) {
+  .product-form {
+    padding-top: 3rem;
+  }
+}
+.product-form span {
   margin: 0 .375rem;
-  color: var(--fill);
+  color: var(--danger);
 }
-.add-new-item div {
+.product-form div {
+  position: relative;
   padding: .5rem;
-  border-radius: .23rem;
+  
 }
-.add-new-item label {
+.product-form label {
   font-size: 1.1em;
   padding: .25rem;
-  margin: 0;
 }
-/* adding item from input and textarea style */
-.add-new-item input[type="number"]::-webkit-inner-spin-button 
-,.add-new-item input[type="number"]::-webkit-outer-spin-button {
-  opacity: 1;
-  padding: .4rem;
-  height: 1rem;
-}
-.add-new-item input[type="number"]{
-  font-weight: bold;
-  text-align: center;
-  font-size: 1.4em;
-  
-  outline-color: var(--color-effect-light);
-}
-.add-new-item input[type="text"], .add-new-item textarea {
+.product-form input[type="text"], .product-form textarea {
   min-width: 100%;
   padding: .475rem;
   font-size: 1.1em;
@@ -145,109 +181,64 @@ background: var(--primary);
   font-weight: bold;
   border-radius: .25rem;
   margin-top: .375rem;
-  outline-color: var(--color-effect-light);
+  border:2px solid var(--effect-Dark);
+  outline-color: var(--effect-w);
 }
-.add-new-item textarea {
-  height: 10rem;
+/* adding item from input and textarea style */
+.product-form [type="number"]::-webkit-inner-spin-button 
+,.product-form [type="number"]::-webkit-outer-spin-button {
+  opacity: 1;
+  padding: .4rem;
+}
+.product-form [type="number"]{
+  font-weight: bold;
+  text-align: center;
+  font-size: 1.4em;
+  max-width: 30%;
+  border-radius: .375rem;
+  border: 2px solid var(--effect-Dark);
+  outline-color: var(--effect-w);
 }
 
-/* ------------------------------------ */
-/* adding items from add-images styles */
-.item-imgs-container {
-  text-align: center;
-  outline: 1px solid;
-}
-.imgs-container {
+.product-form .imgs-container {
   display: flex;
   gap: .5rem;
-  overflow-y: auto;
+  overflow: auto;
+  position: relative;
 }
-
-.item-imgs-container  input {
-  padding: 0;
-  margin: 0;
+.product-form .file-input{
   display: none;
 }
-.item-imgs-container  button {
-  background: transparent;
-  margin: 0 .5rem;
-}
-.item-imgs-container .item-img button:hover {
-  transform: translateY(2px);
-}
 
-.add-new-item .item-btns {
+.product-form .item-btns {
   text-align: left;
 }
-.add-new-item .item-save, .add-new-item .item-cancel {
+.product-form .item-save, .product-form .item-cancel {
   background: transparent;
   padding: .575rem 2rem;
   font-size: 1.3em;
   margin-left: 1rem;
-
+  border-radius: .375rem;
+  transition: all .2s linear;
+  border: 1px solid;
+  color: inherit;
+  cursor: pointer;
 }
-.add-new-item .item-save:hover, .add-new-item .item-cancel:hover {
-  transform: translateY(2px);
-  outline: 2px solid #007acc;
+.product-form .item-save:hover, .product-form .item-cancel:hover {
+  transform: translateY(-2px);
+  outline: 2px solid var(--effect-Dark);
 }
-/* ---------------------------------------- */
-
-
-
-
-
-
-
-
-
-.show-menu {
-  /* clip-path: polygon(100% 0%, 100% 100%, 0% 100%, 0% 0%); */
-  box-shadow: -.2rem 0rem .4rem var(--secondary);
-}
-.menu-btn {
-  text-align: left;
+.stats {
   padding: 1rem;
 }
-.menu-btn button {
-  font-size: 1.3em;
-  font-weight: 500;
-  background: transparent;
-} 
-.dash-nav ul{
-  padding: 0;
-  list-style: none;
-  margin-top: 1.6rem;
-  outline: 1px solid;
+.stats-numbers {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  justify-content: center;
+  
 }
-.dash-nav ul li {
-  text-align: right;
-  display: flex;
-}
-.dash-nav ul li a {
-  text-decoration: none;
-  padding: .5rem;
-  flex: 1;
-  transition: all .4s linear;
-  font-weight: bold;
-  border-bottom: 1px solid var(--f-primary);
-  color: var(--f-primary);
-}
-.dash-nav ul li a:hover {
-  background: var(--secondary);
-  color: var(--primary);
-}
-
-
-
-.header {
-  box-shadow: 2px 2px 4px var(--f-secondary);
-  height: 5rem;
-  position: fixed;
-  width: 100%;
-  text-align: right;
-}
-.toggle-menu {
-  padding: .5rem .8rem;
-  margin: 1rem;
-  background: transparent;
+@media only screen and (max-width:47rem) {
+  .stats-numbers {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }

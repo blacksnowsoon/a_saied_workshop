@@ -3,11 +3,22 @@ import ReactDOM from 'react-dom/client';
 import './CSS/index.css';
 import App from './Components/App/App';
 import reportWebVitals from './reportWebVitals';
+import {HashRouter, BrowserRouter} from 'react-router-dom';
+import { QueryClient, QueryClientProvider } from 'react-query';
+// import { ReactQueryDevtools } from 'react-query/devtools'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+const queryClient = new QueryClient();
 root.render(
   <React.StrictMode>
-    <App />
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter basename='/' >
+        <App  />
+      </BrowserRouter>
+    
+    </QueryClientProvider>
+    
   </React.StrictMode>
 );
 
@@ -15,3 +26,4 @@ root.render(
 // to log results (for example: reportWebVitals(console.log))
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
+//  <ReactQueryDevtools /> 

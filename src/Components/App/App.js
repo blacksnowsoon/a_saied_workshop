@@ -1,43 +1,56 @@
-import React, { useEffect, useState } from "react";
-import { BrowserRouter, Route, Routes } from "react-router-dom";
-import Home from "../Home/Home";
 import "../../CSS/App.css";
-import AdminBoard from "../Dashboard/AdminBoard";
-import { func } from "prop-types";
-import * as data from "../../Utils/Data";
+import React, { useState, useContext } from "react";
+import { Route, Routes } from "react-router-dom";
+import Home from "../body/Client/Home";
+import About from "../body/Client/About";
+import AppContext from "../../Context";
+import Layout from "./Layout";
+import ProductsList from "../body/Client/ProductsList";
+import Dashboard from "../body/Admin/Dashboard";
+import ProductForm from "../body/Admin/ProductFrom";
+import ProductView from "../body/Client/ProductView";
+import { ClientFav } from "../body/Client/ClientFav";
 
 function App() {
-
-  const [user, setUser] = useState(true);
-  const [products, setProducts] = useState(data.products);
-	const [categories, setCategories] = useState(data.categories);
-
-  // useEffect(()=>{
-	// 	fetch()
-  //   setProducts(Array.from(data.products).map(pro=>pro));
-	// 	setCategories(Array.from(data.categories).map(cat=>cat));
-	// 	console.log(categories)
-  // }, []);
-
-  
-  return(
-  	<BrowserRouter>
-    	<Routes>
-
-      	<Route path="/"  element={<Home pathName='/home' 
-				products ={products}
-				categories={categories} />} />
-
-      	<Route path="/admin" element={<AdminBoard 
-				user={user} 
-				products ={products}
-				categories={categories} />} />
-
-    	</Routes>
-  
-    </BrowserRouter>
-  )
-
+  // graping the app context to the provider
+  const {
+    appDefaults,
+    homePageCarosualArrImgs,
+    PROJECT_CONTEXT,
+  } = useContext(AppContext);
+	// set the app theme state
+  const [appTheme, setAppTheme] = useState(PROJECT_CONTEXT.themeColor);
+  const [favs, setFavs] = useState([]);
+  const [showFavs, setShowFavs] = useState(false)
+  return (
+    <AppContext.Provider
+      value={{
+        appDefaults,
+        homePageCarosualArrImgs,
+        appTheme,
+        setAppTheme,
+        favs,
+        setFavs,
+        PROJECT_CONTEXT,
+        showFavs, 
+        setShowFavs,
+      }}
+    >
+      <Routes>
+        <Route path="/" element={<Layout />}>
+          <Route index path="/" element={<Home />} />
+          <Route path="products" element={<ProductsList />} />
+          <Route path="product/:id" element={<ProductView />} />
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="add" element={<ProductForm />} />
+          <Route path="edit" element={<ProductForm />} />
+          <Route path="about" element={<About />} />
+          <Route path="favs" element={<ClientFav />} />
+        </Route>
+      </Routes>
+      
+    </AppContext.Provider>
+  );
 }
 
 export default App;

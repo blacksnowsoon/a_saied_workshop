@@ -1,37 +1,37 @@
-@import './Dashboard.css';
-@import './Footer.css';
-@import './ProductsView';
-@import './Mediaquery.css';
-
-:root {
-
-  --primary: #333333;
-  --secondary: #f6f7f9;
-  --font-on-primary: whitesmoke;
-  --font-on-secondary: #000000;
-  --color-effect-light: #2c8efd;
-  --color-effect-Dark: #0a5ef2;
-  --fill: #e00202;
-}
+/* the index css handel the global stylies in the app */
 *, ::after, ::before, ::backdrop {
   box-sizing: border-box;
   scroll-behavior: smooth;
   margin: 0;
 }
+@font-face {
+  font-family: cairo;
+  src: url('./font/Cairo-Light.ttf');
+}
 body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
-  background: var(--secondary);
+  font-family: cairo;
+  font-size: 13px;
+  position: relative;
+}
+main {
+  min-height: 100svh;
+}
+button:disabled {
+  filter: grayscale(20);
+  opacity: .8;
 }
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  /* font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace; */
 }
-label, span, li {
-  font-weight: bold;
-  letter-spacing: 1px;
+ul {
+  list-style: none;
+  padding: 0;
 }
-button {
+
+.button {
   cursor: pointer;
   border-radius: .375rem;
   box-shadow: -1px 1px 3px ,
@@ -40,50 +40,30 @@ button {
   transition: all .3s;
   color: var(--font-on-secondary);
 }
-button:hover {
+.button:hover {
   color: var(--color-effect-Dark)
 }
-ul {
-  list-style: none;
-  padding: 0;
-}
-select {
+.select {
   min-width: 5.5rem;
-  padding: .35rem;
+  padding: .2rem;
   font-weight: bold;
   border-radius: .35rem;
   background: transparent;
-  color: var(--font-on-secondary);
-  outline-color: var(--color-effect-Dark);
-  font-size: 1.1em;
+  font-size: .8em;
+  text-align: center;
+  font-family: cairo;
 }
-option {
+.option {
   color: var(--font-on-secondary);
   background-color: var(--secondary);
   text-align: center;
-}
-.svg {
-  scale: 1.15;
-  border-radius: .375rem;
-  fill: var(--font-on-primary);
-}
-.svg-fav{
-  fill: var(--fill);
-}
-.svg-like{
-  fill: var(--color-effect-light);
-}
-.svg-like:hover{
-  fill: var(--color-effect-light);
-}
-.svg-fav:hover {
-  fill: var(--fill);
+  padding-top: .2rem;
 }
 .box-shadow-down {
-  box-shadow: -2px 2px 4px var(--font-on-secondary);
+  box-shadow: 0px 2px 4px ;
 }
 .box-shadow-up {
-  box-shadow: 2px -2px 4px var(--font-on-secondary);
+  box-shadow: 0px -2px 4px ;
 }
 .hide {
   display: none;

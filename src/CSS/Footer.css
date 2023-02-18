@@ -1,22 +1,38 @@
 /* STYLING FOOTER */
 .footer {
-    height: 100vh;
-    background-color: var(--primery);
-    outline: 2px solid whitesmoke;
-    margin-bottom: 4.5rem;
-    /* opacity: .7; */
-  }
-  .footer .address {
-    display: flex;
-    justify-content: center;
-    gap: 1rem;
-    padding: 1rem;
-  }
-  .footer hr {
-    margin: .5rem 0;
-  }
-  .footer .copy {
-    padding: .5rem;
-    display: flex;
-    justify-content: space-between;
-  }
+  min-height: 40vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.footer .address {
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  gap: 1rem;
+}
+.address .contact-us {
+  display: flex;
+  gap: 1rem;
+}
+.footer a {
+  display: flex;
+  text-decoration: none;
+  align-items: center;
+  text-align: left;
+}
+.footer hr {
+  margin: .5rem 0;
+}
+.footer .copy {
+  padding: .5rem;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+  font-size: .9em;
+}
+.footer .copy .svg16 {
+  scale: 1;
+}
