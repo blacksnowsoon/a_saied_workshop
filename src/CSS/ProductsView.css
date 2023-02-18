@@ -1,0 +1,233 @@
+/* STYLING CATALOG VIEW */
+/* ----------- styling the controller view */
+.controller-container {
+  position: sticky;
+  top: 0;
+  z-index: 999;
+  display: grid;
+  grid-auto-columns: repeat(2, 1fr);
+  gap: .5rem;
+  padding: .3rem;
+  background-color: var(--secondary);
+  color: var(--font-on-secondary);
+}
+.dis-sorting, .btns-dis {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.dis-sorting {
+  grid-column: 1 / 2;
+  gap: .4rem;
+}
+.btns-dis {
+  grid-column: 2 / 2;
+  align-items: flex-end;
+  gap: .5rem;
+  padding: 0 .3rem;
+} 
+.btn-dis-list, .btn-dis-grid{
+  aspect-ratio: 1;
+  width: 1.8rem;
+  padding: 0;
+  justify-content: center;
+  align-items: center;
+}
+.active-view {
+  outline: 2px dashed var(--color-effect-Dark);
+}  
+  /* STYLING THE DISPLAY VIEW  */
+.dis-grid, .dis-list {
+  margin: 0 auto;
+  max-width: 1000px;
+  padding: .5rem;
+ 
+}
+.product-card .content {
+  height: 100%;
+  color: var(--font-on-secondary);
+}
+  /* --------- styling the disply view in grid*/
+.dis-grid {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: .5rem;
+}
+.dis-grid .product-card {
+  width: 11.5rem;
+  height: 16rem;
+  transform-style: preserve-3d;
+  transition: 1s ease-in;
+}
+.dis-grid .product-card .content {
+  transform-style: preserve-3d;
+}
+.dis-grid .product-card:hover {
+  transform: rotateY(180deg);
+}
+.dis-grid .product-card .content .back, .dis-grid .product-card .content .front {
+  transform-style: preserve-3d;
+  backface-visibility: hidden;
+  display: flex;
+  flex-direction: column;
+  justify-content: safe;
+  height: 100%;
+}
+.dis-grid .product-card .content img {
+  width: 100%;
+  max-height: 70%;
+  object-fit: cover;
+  flex: 1;
+}
+.dis-grid .product-card .back {
+  transform: rotateY(180deg);
+  position: absolute;
+  inset: 0;
+  padding: 0 .5rem;
+}
+.dis-grid .product-card .back-img {
+  position: absolute;
+  inset: 0;
+  background-position: center;
+  background-size: cover;
+}
+.dis-grid .product-card .back-info, .dis-grid .product-card .back-img {
+  transform: translateZ(90px);
+  line-height: 1.2rem;
+}
+.dis-grid .product-card h2 {
+  pointer-events: none;
+  margin-top: .2rem;
+  letter-spacing: 1px;
+}
+.product-card p {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: var(--color-effect-light);
+  margin-top: .2rem;
+}
+.dis-grid .product-card::before,
+.dis-grid .product-card::after {
+    content: "";
+    inset: 0;
+    height: 100%;
+    position: absolute;
+    background-size:cover;
+    transform: rotateY(180deg) translateZ(2px);
+    background-image: linear-gradient(var(--secondary), var(--primary));
+  }
+  /* styling the display view in list */
+  .dis-list {
+    display: flex;
+    flex-direction: column;
+    gap: .5rem;
+  }
+  .dis-list .product-card {
+    width: 100%;
+  }
+  .dis-list .product-card .content {
+    display: flex;
+    background-image: linear-gradient(var(--secondary), var(--primary));
+  }
+  .dis-list .front, .dis-list .back {
+    display: flex;
+    flex-direction: row;
+    gap: .5rem;
+    align-items: center;
+    flex: 1;
+    flex-grow: none;
+    flex-shrink: none;
+  }
+  .dis-list .product-card .content img {
+    width: 50%;
+    height: 100%;
+    object-fit: cover;
+  }
+  .product-card .content .back-info {
+    height: 100%;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5rem 0;
+    gap: .375rem;
+  }
+  .product-card .content .back-info p {
+    flex: 1;
+  }
+  .product-card .content .back-info .card-actions {
+    display: flex;
+    gap: .4rem;
+  }
+  .content .back-info .card-actions button {
+    aspect-ratio: 1;
+    background-color: transparent;
+    width: 1.9rem;
+    padding: 0;
+    box-shadow: none;
+  }
+  .content .back-info .card-actions button:hover {
+    outline: 2px solid var(--color-effect-Dark) ;
+  }
+  
+  /* single product preview */
+  .product-privew {
+    height: calc(100vh - 10%);
+    display: grid;
+    grid-auto-flow: column;
+    grid-auto-columns: 1fr;
+    
+    
+  }
+  .privew-infos {
+    text-align: right;
+    padding:1rem;
+  }
+  .privew-infos p {
+    margin-top: 1rem;
+    line-height: 2rem;
+  }
+  .privew-imgs {
+    width: 100%;
+    min-height: 500px;
+    outline: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding: .5rem;
+
+  }
+  
+  .privew-imgs .default-img {
+    max-width: 100%;
+    max-height: 85%;
+    min-width: 100%;
+    min-height: 85%;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-size: cover;
+    transition: all 3s ease-in linear;
+  }
+  .row-imgs  {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    height: 10%;
+    justify-self: last baseline;
+  }
+  .row-imgs .col-img {
+    aspect-ratio: 1;
+    width: 4rem;
+    border-radius: .375rem;
+    cursor: pointer;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    transition: all 3s ease-in linear;
+  }
+  .default {
+    opacity: .5;
+    transition: all 3s ease-in linear;
+  }
+  

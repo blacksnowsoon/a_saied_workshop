@@ -1,0 +1,95 @@
+
+
+.App {
+  text-align: center;
+  margin: 0 auto;
+}
+
+/* STYLING HOME PAGE */
+.home-container {
+  direction: rtl;
+}
+.hero {
+  background-image: url(../Assets/background/bg_shap_animated.svg);
+  background-size: cover;
+  background-repeat: no-repeat;
+  height: 100vh;
+  display: flex;
+  grid-template-columns: repeat(2, 1fr);
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+.hero .img1 {
+  transform: rotate(25deg);
+  width: 350px;
+  left: 0;
+  top: 0;
+}
+.hero .img2 {
+  transform: rotate(45deg);
+  left: 30%;
+  top: 70%;
+  width: 150px;
+
+}
+.hero .img3 {
+  transform: rotate(25deg);
+  width: 350px;
+  top: 0;
+  right: 3rem;
+}
+.hero img {
+  flex: 1;
+  position: absolute;
+  /* inset: 0; */
+  max-width: 50%;
+  
+  max-height: calc(100vh * 50%);
+}
+
+
+
+
+
+
+
+
+
+/* nav bar */
+.home-nav-bar {
+  height: 4rem;
+  width: 50%;
+  position: fixed;
+  background-color: var(--primary);
+  bottom: 0;
+  right: 25%;
+  box-shadow: inset 0rem 0rem 2rem var(--f-secondary);
+  z-index: 999;
+  clip-path: polygon(0% 100%, 0% -350%, 50% 70%, 100% -350% , 100% 100%);
+}
+.nav-menu {
+  position: relative;
+  display: flex;
+  list-style: none;
+  justify-content: space-around;
+  padding: 0;
+  align-items: center;
+  outline: 1px solid;
+  height: 100%;
+}
+.svg-color {
+  fill: whitesmoke;
+  box-shadow: 1px 1px 3px var(--f-primary),
+              -2px -2px 3px var(--f-secondary);
+  scale: .8;
+}
+
+
+
+
+
+
+
+
+

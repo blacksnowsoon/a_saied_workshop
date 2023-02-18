@@ -1,0 +1,22 @@
+/* STYLING FOOTER */
+.footer {
+    height: 100vh;
+    background-color: var(--primery);
+    outline: 2px solid whitesmoke;
+    margin-bottom: 4.5rem;
+    /* opacity: .7; */
+  }
+  .footer .address {
+    display: flex;
+    justify-content: center;
+    gap: 1rem;
+    padding: 1rem;
+  }
+  .footer hr {
+    margin: .5rem 0;
+  }
+  .footer .copy {
+    padding: .5rem;
+    display: flex;
+    justify-content: space-between;
+  }
